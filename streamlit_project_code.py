@@ -65,7 +65,7 @@ st.sidebar.markdown(google_svg, unsafe_allow_html=True)
 
 # Pages du projet
 pages = ["Introduction", "Dataset", "Dataviz", "Modélisation", "Démonstration", "Conclusion"]
-page = st.sidebar.radio("", pages)
+page = st.sidebar.radio("_", pages)
 
 # Saut ligne
 st.sidebar.markdown("<br>", unsafe_allow_html=True) 
