@@ -664,6 +664,22 @@ if page == pages[3] :
 
    # Bouton pour lancer le calcul des performances de chaque modèle
    if st.button("➡️ Lancer les modèles"):
+      # Assurez-vous que l'encodage est fait avant de passer aux modèles
+      oneh = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
+      
+      # identification des colonnes catégorielles
+      cat = ['Energie', 'Carrosserie', 'Type_de_boite']
+      
+      # encodage sur le jeu d'entraînement
+      cat_train_encoded = pd.DataFrame(oneh.fit_transform(X_train[cat]), columns=oneh.get_feature_names_out(cat), index=X_train.index)
+      
+      # encodage sur le jeu de test
+      cat_test_encoded = pd.DataFrame(oneh.transform(X_test[cat]), columns=oneh.get_feature_names_out(cat), index=X_test.index)
+
+      # concaténation avec les autres colonnes non catégorielles
+      X_train = pd.concat([X_train.drop(cat, axis=1), cat_train_encoded], axis=1)
+      X_test = pd.concat([X_test.drop(cat, axis=1), cat_test_encoded], axis=1)
+
       # Calcul des métriques pour chaque modèle
       metrics_et = calculate_metrics(et_regressor, X_train_concat, X_test_concat, y_train, y_test)
       metrics_xgb = calculate_metrics(xgb_regressor, X_train_concat, X_test_concat, y_train, y_test)
