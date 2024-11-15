@@ -21,7 +21,7 @@ from sklearn.metrics import f1_score
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
-from sklearn.metrics import root_mean_squared_error, mean_absolute_error
+from sklearn.metrics import root_mean_squared_error, mean_absolute_error, mean_squared_error
 from sklearn.model_selection import cross_val_score
 
 
