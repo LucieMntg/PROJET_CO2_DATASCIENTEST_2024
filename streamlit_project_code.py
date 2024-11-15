@@ -47,7 +47,7 @@ df=pd.read_csv(file_path, encoding='utf-8', sep=';')
 from pathlib import Path
 
 # Ajout du logo dans le sidebar
-image_path = Path("Images\logo_co2_calculator.png")
+image_path = Path("Images/logo_co2_calculator.png")
 image_path_str = str(image_path) 
 
 st.sidebar.image(image_path_str)
