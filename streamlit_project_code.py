@@ -662,47 +662,48 @@ if page == pages[3] :
       }
       return metrics
 
-   # Bouton pour lancer le calcul des performances de chaque modèle
-   if st.button("➡️ Lancer les modèles"):
-      # Calcul des métriques pour chaque modèle
-      metrics_et = calculate_metrics(et_regressor, X_train_concat, X_test_concat, y_train, y_test)
-      metrics_xgb = calculate_metrics(xgb_regressor, X_train_concat, X_test_concat, y_train, y_test)
-      metrics_rf = calculate_metrics(rf_regressor, X_train_concat, X_test_concat, y_train, y_test)
-      
-      # Création du DataFrame global
-      df_metrics = pd.DataFrame([metrics_et, metrics_xgb, metrics_rf], index=["Extra Trees Regressor", "XGBoost Regressor", "Random Forest Regressor"])
-      
-      # Expander
-      with st.expander("Afficher les performances des modèles"):
-         st.dataframe(df_metrics)
-         st.write("""
-         **Focus sur les 3 principales métriques :**
-                  
-         ✅ Plus le **score de détermination (R2)** sur les données d'entraînement se rapproche de 1, plus le modèle capture la variabilité des valeurs cibles, indiquant qu'il est capable de bien expliquer la relation entre les caractéristiques (features) et les émissions de CO2 (target). 
-         
-         ✅ Plus le R2 sur les données de test se rapproche de 1, plus le modèle fonctionne sur les nouvelles données sans trop perdre de performance.
-                  
-         ✅ La métrique **MAE** est la plus interprétable et adaptée pour notre problématique, car elle exprime l'erreur moyenne en unités de la cible.
-         
-         
-         - Interprétation de la valeur de la MAE test :
-                  
-               > Soit x la valeur MAE test :
-                  > Signifie qu'en moyenne, le modèle se trompe de x g/km dans ses prédictions des émissions du CO2 par kilomètre.
-                  > Il faut ensuite rapporter ce résultat (x) à l’échelle des données de la target pour savoir si l'erreur est modérée ou significative.
+   # Expender performances de chaque modèle
+   data = {
+      "Modèle": ["ExtraTrees Regressor", "XGB Regressor", "RandomForest Regressor"],
+      "Score R2 (train)": [0.9989545616198728, 0.9973664922627589, 0.9876028297190369],
+      "Score R2 (test)": [0.9678605197212603, 0.9486532220962143, 0.9532433786183869],
+      "MAE train": [0.72, 1.73, 3.98],
+      "MAE test": [7.04, 8.10, 7.94],
+      "MSE train": [3.94, 9.92, 46.72],
+      "MSE test": [108.21, 172.89, 157.43],
+      "RMSE train": [1.98, 3.15, 6.83],
+      "RMSE test": [10.40, 13.15, 12.55],
+      "Validation croisée": [0.923307091061502, 0.906473055091632, 0.8875790095246996]
+   }
 
-               > Exemple avec l'ExtraTreesRegressor : 
-                  > Une MAE de 7 g/km sur le jeu de test correspond à environ 2% de l’amplitude totale des valeurs, 
-                  soit une erreur que nous pouvons considérer comme modérée, notamment pour les véhicules à fortes émissions 
-                  mais pas pour l'inverse car l'erreur devient significative en proportion.
-                  
-                  > En effet, pour une voiture n’émettant que 30 g/km, une erreur de 7 g/km représente environ 23% de la valeur réelle. 
-                  La prédiction est donc moins fiable pour ce type de véhicule.
-         
-                  
-         ✅ La **validation croisée** est intéressante car elle permet d’évaluer la robustesse et la généralisation du modèle.
-         """)
+   # Créer un DataFrame avec les valeurs
+   df_metrics = pd.DataFrame(data)
 
+   # Expander
+   with st.expander("Afficher les performances des modèles"):
+      st.dataframe(df_metrics)
+      st.write("""
+      **Focus sur les 3 principales métriques :**
+
+      ✅ Plus le **score de détermination (R2)** sur les données d'entraînement se rapproche de 1, plus le modèle capture la variabilité des valeurs cibles, indiquant qu'il est capable de bien expliquer la relation entre les caractéristiques (features) et les émissions de CO2 (target). 
+
+      ✅ Plus le R2 sur les données de test se rapproche de 1, plus le modèle fonctionne sur les nouvelles données sans trop perdre de performance.
+
+      ✅ La métrique **MAE** est la plus interprétable et adaptée pour notre problématique, car elle exprime l'erreur moyenne en unités de la cible.
+
+      - **Interprétation de la valeur de la MAE test :**
+
+         > Soit x la valeur MAE test :
+         > Cela signifie qu'en moyenne, le modèle se trompe de x g/km dans ses prédictions des émissions du CO2 par kilomètre.
+         > Il faut ensuite rapporter ce résultat (x) à l’échelle des données de la target pour savoir si l'erreur est modérée ou significative.
+
+         > Exemple avec l'ExtraTreesRegressor :
+         > Une MAE de 7 g/km sur le jeu de test correspond à environ 2% de l’amplitude totale des valeurs, soit une erreur que nous pouvons considérer comme modérée, notamment pour les véhicules à fortes émissions, mais pas pour l'inverse car l'erreur devient significative en proportion.
+
+         > En effet, pour une voiture n’émettant que 30 g/km, une erreur de 7 g/km représente environ 23% de la valeur réelle. La prédiction est donc moins fiable pour ce type de véhicule.
+
+      ✅ La **validation croisée** est intéressante car elle permet d’évaluer la robustesse et la généralisation du modèle.
+      """)
 
 
 
