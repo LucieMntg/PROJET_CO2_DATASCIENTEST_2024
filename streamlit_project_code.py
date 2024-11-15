@@ -93,7 +93,7 @@ st.sidebar.markdown("""
 if page == pages[0]:
     
    # Import du GIF
-   gif_path = Path("Images\Image_intro_gif.gif")
+   gif_path = Path("Images/Image_intro_gif.gif")
    gif_path_str = str(gif_path)
    st.image(gif_path_str)
 
@@ -155,7 +155,7 @@ if page == pages[0]:
 if page == pages[1] : 
 
    # Import du GIF
-   gif_path = Path("Images\Image_dataset_gif.gif")
+   gif_path = Path("Images/Image_dataset_gif.gif")
    gif_path_str = str(gif_path)
    st.image(gif_path_str)
 
@@ -232,7 +232,7 @@ df['Essai CO2 type 1'] = df['Essai CO2 type 1'].str.replace(',', '.').astype(flo
 if page == pages[2] : 
 
    # Import du GIF
-   gif_path = Path("Images\Image_dataviz_gif.gif")
+   gif_path = Path("Images/Image_dataviz_gif.gif")
    gif_path_str = str(gif_path)
    st.image(gif_path_str)
    
@@ -322,7 +322,7 @@ if page == pages[2] :
 # Page 4 MODELISATION
 if page == pages[3] : 
    # Import du GIF
-   gif_path = Path("Images\Image_model_gif.gif")
+   gif_path = Path("Images/Image_model_gif.gif")
    gif_path_str = str(gif_path)
    st.image(gif_path_str)
 
@@ -344,7 +344,7 @@ if page == pages[3] :
    from pathlib import Path
 
    # Import du GIF
-   gif_path = Path("Images\Image_transition_gif.gif")
+   gif_path = Path("Images/Image_transition_gif.gif")
    gif_path_str = str(gif_path)
    if gif_path.exists():
       st.image(gif_path_str)
@@ -461,7 +461,7 @@ if page == pages[3] :
 
 
    # Expender
-   image_path = "Images\Image_lazyp.jpg"
+   image_path = "Images/Image_lazyp.jpg"
 
    with st.expander("Afficher les résultats du Lazy Predict"):
       st.image(image_path, caption="")
@@ -521,7 +521,7 @@ if page == pages[3] :
    # Expander 
    with st.expander("Voir le processus de la modélisation"):
     st.write("""Pour la partie modélisation, nous avons fonctionné selon la méthode de l'entonnoir :""")
-    st.image("Images\Entonnoir.png")
+    st.image("Images/Entonnoir.png")
 
    # Sous-titre
    st.markdown(
@@ -1029,9 +1029,9 @@ if page == pages[3] :
    # Afficher les Importance Features de chacun des 3 modèles
    with st.expander("Voir les diagrammes des Features Importance"):
       # Chemins des images 
-      img_path1 = "Images\IF_ETRegressor.jpg"
-      img_path2 = "Images\IF_XGBRegressor.jpg"
-      img_path3 = "Images\IF_RFRegressor.jpg"
+      img_path1 = "Images/IF_ETRegressor.jpg"
+      img_path2 = "Images/IF_XGBRegressor.jpg"
+      img_path3 = "Images/IF_RFRegressor.jpg"
 
       # Affichage des images dans l'expander
       st.image([img_path1, img_path2, img_path3], caption=["ExtraTrees Regressor", "XGB Regressor", "Random Forest Regressor"])
@@ -1040,7 +1040,7 @@ if page == pages[3] :
    # Afficher les Features Importance de chacun des 3 modèles
    with st.expander("Voir le tableau compararif"):
       # Chemins de l'image
-      img_path1 = "Images\Tableau_top_features.jpg"
+      img_path1 = "Images/Tableau_top_features.jpg"
 
       # Affichage des images dans l'expander
       st.image([img_path1])
@@ -1059,7 +1059,7 @@ if page == pages[3] :
 
 
    # Import du GIF
-   gif_path = Path("Images\Image_features_gif.gif")
+   gif_path = Path("Images/Image_features_gif.gif")
    gif_path_str = str(gif_path)
    st.image(gif_path_str)
 
@@ -1072,7 +1072,7 @@ if page == pages[3] :
 # Page 5 DEMONSTRATION
 if page == pages[4] : 
    # Définir le chemin vers le fichier GIF
-   gif_path = Path("Images\Image_demo_gif.gif")
+   gif_path = Path("Images/Image_demo_gif.gif")
 
    # Convertir le chemin en chaîne de caractères
    gif_path_str = str(gif_path)
@@ -1204,7 +1204,7 @@ if page == pages[4] :
 if page == pages[5] : 
 
    # Import de l'image gif
-   gif_path = Path("Images\Image_conclu_gif.gif")
+   gif_path = Path("Images/Image_conclu_gif.gif")
    gif_path_str = str(gif_path)
    st.image(gif_path_str)
 
