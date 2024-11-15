@@ -639,10 +639,10 @@ if page == pages[3] :
       r2_train = model.score(X_train, y_train)
       r2_test = model.score(X_test, y_test)
       mae_train = mean_absolute_error(y_train, y_pred_train)
-      mse_train = mean_squared_error(y_train, y_pred_train, squared=True)
+      mse_train = mean_squared_error(y_train, y_pred_train)
       rmse_train = root_mean_squared_error(y_train, y_pred_train)
       mae_test = mean_absolute_error(y_test, y_pred_test)
-      mse_test = mean_squared_error(y_test, y_pred_test, squared=True)
+      mse_test = mean_squared_error(y_test, y_pred_test)
       rmse_test = root_mean_squared_error(y_test, y_pred_test)
       
       # Validation croisée
