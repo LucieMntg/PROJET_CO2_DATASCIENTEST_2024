@@ -21,7 +21,7 @@ from sklearn.metrics import f1_score
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
-from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_squared_error
+from sklearn.metrics import root_mean_squared_error, mean_absolute_error
 from sklearn.model_selection import cross_val_score
 
 
@@ -640,10 +640,10 @@ if page == pages[3] :
       r2_test = model.score(X_test, y_test)
       mae_train = mean_absolute_error(y_train, y_pred_train)
       mse_train = mean_squared_error(y_train, y_pred_train, squared=True)
-      rmse_train = mean_squared_error(y_train, y_pred_train, squared=False)
+      rmse_train = root_mean_squared_error(y_train, y_pred_train)
       mae_test = mean_absolute_error(y_test, y_pred_test)
       mse_test = mean_squared_error(y_test, y_pred_test, squared=True)
-      rmse_test = mean_squared_error(y_test, y_pred_test, squared=False)
+      rmse_test = root_mean_squared_error(y_test, y_pred_test)
       
       # Validation croisée
       cross_val_scores = cross_val_score(model, X_train, y_train, cv=5, scoring='r2')
