@@ -665,21 +665,21 @@ if page == pages[3] :
    # Expender performances de chaque modèle
    data = {
       "Modèle": ["ExtraTrees Regressor", "XGB Regressor", "RandomForest Regressor"],
-      "Score R2 (train)": [0.9989545616198728, 0.9973664922627589, 0.9876028297190369],
-      "Score R2 (test)": [0.9678605197212603, 0.9486532220962143, 0.9532433786183869],
-      "MAE train": [0.72, 1.73, 3.98],
-      "MAE test": [7.04, 8.10, 7.94],
-      "MSE train": [3.94, 9.92, 46.72],
-      "MSE test": [108.21, 172.89, 157.43],
-      "RMSE train": [1.98, 3.15, 6.83],
-      "RMSE test": [10.40, 13.15, 12.55],
+      "Score R2 (train)": [0.9989545616198728, 0.9978894739730259, 0.9876028297190369],
+      "Score R2 (test)": [0.9678605197212603, 0.9553231519597563, 0.9532433786183869],
+      "MAE train": [0.72, 1.81, 3.98],
+      "MAE test": [7.04, 9.26, 7.94],
+      "MSE train": [3.94, 7.61, 46.72],
+      "MSE test": [108.21, 196.23, 157.43],
+      "RMSE train": [1.98, 2.75, 6.83],
+      "RMSE test": [10.40, 14.00, 12.55],
       "Validation croisée": [0.923307091061502, 0.906473055091632, 0.8875790095246996]
    }
 
    # Créer un DataFrame avec les valeurs
    df_metrics = pd.DataFrame(data)
 
-   # Expander
+   # Expander Afficher les performances des modèles
    with st.expander("Afficher les performances des modèles"):
       st.dataframe(df_metrics)
       st.write("""
@@ -923,16 +923,16 @@ if page == pages[3] :
    # DataFrame avec les données fournies
    data = {
       'Modèles': ['ExtraTrees Regressor', 'XGB Regressor', 'Random Forest Regressor'],
-      'MAE Train / Test': ['0,72 / 7,04', '1,73 / 8,10', '3,98 / 7,94'],
-      'MSE Train / Test': ['3,93 / 108,2', '9,92 / 172,88', '46,71 / 157,43'],
-      'RMSE Train / Test': ['1,98 / 10,40', '3,15 / 13,14', '6,83 / 12,54'],
-      'R2 Train / Test': ['0,99 / 0,96', '0,99 / 0,94', '0,98 / 0,95'],
-      'Validation Croisée': ['0,9233', '0,9200', '0,8875'],
+      'MAE Train / Test': ['0,72 / 7,04', '1,73 / 9,26', '3,98 / 7,94'],
+      'MSE Train / Test': ['3,93 / 108,2', '7,62 / 196,23', '46,71 / 157,43'],
+      'RMSE Train / Test': ['1,98 / 10,40', '2,75 / 14,00', '6,83 / 12,54'],
+      'R2 Train / Test': ['0,99 / 0,96', '0,99 / 0,95', '0,98 / 0,95'],
+      'Validation Croisée': ['0,9233', '0,9064', '0,8875'],
       'MAE Train / Test (après)': ['3,45 / 7,22', '3,57 / 8,54', '0,72 / 7,24'],
       'MSE Train / Test (après)': ['31,30 / 116,15', '22,99 / 142,54', '3,93 / 110,53'],
       'RMSE Train / Test (après)': ['5,59 / 10,67', '4,79 / 11,93', '1,98 / 10,51'],
       'R2 Train / Test (après)': ['0,99 / 0,96', '0,99 / 0,95', '0,99 / 0,96'],
-      'Validation Croisée (après)': ['0,9307', '0,9064', '0,9012']
+      'Validation Croisée (après)': ['0,9307', '0,9200', '0,9012']
    }
 
    df = pd.DataFrame(data)
@@ -1007,7 +1007,7 @@ if page == pages[3] :
    # Contenu
    st.success("Le modèle le plus robuste et le plus performant est l’**Extra Trees Regressor avec ses hyperparamètres par défaut**, bien que sa validation croisée soit supérieure après modification des hyperparamètres.  \
    Après plusieurs tests, le modèle s’est montré plus fiable (lors de la conception du CO2 CALCULATOR).  \
-   En seconde position le XGB Regressor avec les hyperparamètres par défaut et enfin le Random Forest Regressor avec les hyperparamètres modifiés.")
+   En seconde position le XGB Regressor avec les hyperparamètres modifiés et enfin le Random Forest Regressor avec les hyperparamètres modifiés.")
 
 
 
